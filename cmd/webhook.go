@@ -34,8 +34,8 @@ var ignoredNamespaces = []string{
 }
 
 const (
-	admissionWebhookAnnotationInjectKey = "sidecar-injector-webhook.morven.me/inject"
-	admissionWebhookAnnotationStatusKey = "sidecar-injector-webhook.morven.me/status"
+	admissionWebhookAnnotationInjectKey = "fluentd-sidecar-injector-webhook.snailwalker.me/inject"
+	admissionWebhookAnnotationStatusKey = "fluentd-sidecar-injector-webhook.snailwalker.me/status"
 )
 
 type WebhookServer struct {

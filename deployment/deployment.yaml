@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sidecar-injector-webhook-deployment
+  name: fluentd-sidecar-injector-webhook-deployment
   namespace: sidecar-injector
   labels:
-    app: sidecar-injector
+    app: fluentd-sidecar-injector
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sidecar-injector
+      app: fluentd-sidecar-injector
   template:
     metadata:
       labels:
-        app: sidecar-injector
+        app: fluentd-sidecar-injector
     spec:
       containers:
-        - name: sidecar-injector
-          image: morvencao/sidecar-injector:latest
+        - name: fluentd-sidecar-injector
+          image: registry.cn-hangzhou.aliyuncs.com/snailwalker/fluentd-sidecar-injector:latest
           imagePullPolicy: IfNotPresent
           args:
           - -sidecarCfgFile=/etc/webhook/config/sidecarconfig.yaml
@@ -35,7 +35,7 @@ spec:
       volumes:
       - name: webhook-certs
         secret:
-          secretName: sidecar-injector-webhook-certs
+          secretName: fluentd-sidecar-injector-webhook-certs
       - name: webhook-config
         configMap:
-          name: sidecar-injector-webhook-configmap
+          name: fluentd-sidecar-injector-webhook-configmap
